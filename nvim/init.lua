@@ -3,8 +3,6 @@ vim.loader.enable()
 local cmd = vim.cmd
 local opt = vim.o
 
--- <leader> key. Defaults to `\`. Some people prefer space.
--- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -24,6 +22,7 @@ opt.hlsearch = true
 opt.spell = false
 opt.spelllang = 'en'
 
+opt.termguicolors = true
 opt.expandtab = true
 opt.tabstop = 2
 opt.softtabstop = 2

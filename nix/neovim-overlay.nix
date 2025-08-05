@@ -58,6 +58,7 @@ with final.pkgs.lib; let
     nvim-treesitter-context # nvim-treesitter-context
     gruvbox-nvim # gruvbox colorscheme
     neo-tree-nvim # neotree 
+    bufferline-nvim # bufferline-nvim
     # ^ UI
     # language support
     # ^ language support
