@@ -83,5 +83,5 @@ require('lualine').setup {
       },
     },
   },
-  extensions = { 'fugitive', 'fzf', 'toggleterm', 'quickfix' },
+  extensions = { 'fzf', 'toggleterm', 'quickfix' },
 }
