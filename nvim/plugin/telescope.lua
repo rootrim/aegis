@@ -16,7 +16,7 @@ local layout_config = {
     height = function(_, _, max_lines)
       return math.floor(max_lines * 0.7)
     end,
-    prompt_position = 'top',
+    prompt_position = 'bottom',
     preview_cutoff = 0,
   },
 }

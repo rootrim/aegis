@@ -50,7 +50,6 @@ with final.pkgs.lib; let
     # telescope and extensions
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
     telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim
-    # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
     # ^ telescope and extensions
     # UI
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
@@ -58,6 +57,7 @@ with final.pkgs.lib; let
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
     gruvbox-nvim # gruvbox colorscheme
+    neo-tree-nvim # neotree 
     # ^ UI
     # language support
     # ^ language support
