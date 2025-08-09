@@ -34,7 +34,6 @@ let
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
     nvim-treesitter.withAllGrammars
-    rustaceanvim # Rust support
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
     # nvim-cmp (autocompletion) and extensions
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
@@ -68,9 +67,11 @@ let
     bufferline-nvim # bufferline-nvim
     # ^ UI
     # language support
+    rustaceanvim # Rust support
     # ^ language support
     # navigation/editing enhancement plugins
-    vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
+    # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
+    nvim-autopairs # autopairs made easy
     eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
@@ -80,6 +81,7 @@ let
     nvim-unception # Prevent nested neovim sessions | nvim-unception
     # ^ Useful utilities
     # libraries that other plugins depend on
+    mini-nvim
     sqlite-lua
     plenary-nvim
     nvim-web-devicons
