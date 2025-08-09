@@ -50,6 +50,9 @@ let
     # lsp extensions
     nvim-lspconfig
     # ^ lsp extensions
+    # formatting
+    conform-nvim # Conform formatter 
+    # ^ formatting
     # git integration plugins
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     # ^ git integration plugins
@@ -98,6 +101,7 @@ let
     # language servers, etc.
     lua-language-server
     nil # nix LSP
+    stylua # lua formatter
   ];
 in
 {
