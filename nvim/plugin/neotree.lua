@@ -3,6 +3,4 @@ if vim.g.did_load_neotree_plugin then
 end
 vim.g.did_load_neotree_plugin = true
 
-vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle float<CR>', { desc = 'Toggle neotree (float)'})
-
-
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle float<CR>', { desc = 'Toggle neotree (float)' })

@@ -38,7 +38,12 @@ vim.keymap.set('n', '<leader>fh', builtin.command_history, { desc = '[f]ind comm
 vim.keymap.set('n', '<leader>fl', builtin.loclist, { desc = '[f]ind [l]oclist' })
 vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = '[f]ind [r]egisters' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[f]ind [b]uffers' })
-vim.keymap.set('n', '<leader>fcf', builtin.current_buffer_fuzzy_find, { desc = '[f]ind words [c]urrent buffer [f]uzzy' })
+vim.keymap.set(
+  'n',
+  '<leader>fcf',
+  builtin.current_buffer_fuzzy_find,
+  { desc = '[f]ind words [c]urrent buffer [f]uzzy' }
+)
 -- vim.keymap.set('n', '<leader>td', builtin.lsp_document_symbols, { desc = '[t]elescope lsp [d]ocument symbols' })
 -- vim.keymap.set('n', '<leader>to', builtin.lsp_dynamic_workspace_symbols, { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' })
 

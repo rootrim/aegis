@@ -8,23 +8,23 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
-vim.opt.completeopt = { "menu", "menuone", "noinsert"}
+vim.opt.completeopt = { 'menu', 'menuone', 'noinsert' }
 
-cmp.setup({
+cmp.setup {
   mapping = cmp.mapping.preset.insert(),
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lsp_signature_help" },
-		{ name = "nvim_lua" },
-		{ name = "luasnip" },
-		{ name = "path" },
-    { name = "buffer" },
-	}),
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources {
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
+  },
   experimental = {
     ghost_text = true,
     native_menu = false,
@@ -48,17 +48,13 @@ cmp.setup({
         nvim_lua = '[API]',
         path = '[PATH]',
         luasnip = '[SNIP]',
-        copilot = '[AI]'
+        copilot = '[AI]',
       },
     },
   },
+}
 
-})
-
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
@@ -71,46 +67,45 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
+  sources = cmp.config.sources {
     { name = 'path' },
     { name = 'cmdline_history' },
-    { name = 'cmdline' }
-  }),
+    { name = 'cmdline' },
+  },
   -- matching = { disallow_symbol_nonprefix_matching = false }
 })
 
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local function enable_and_config(server, config)
   vim.lsp.enable(server)
-  config["capabilities"] = capabilities
+  config['capabilities'] = capabilities
   vim.lsp.config(server, config)
 end
 
 local servers = {
-  "nil_ls",
-  "lua_ls"
+  'nil_ls',
+  'lua_ls',
 }
 
 for _, server in ipairs(servers) do
   enable_and_config(server, {})
 end
 
-vim.keymap.set({ "i", "s" }, "<C-k>", function()
-	if luasnip.expand_or_jumpable() then
-		luasnip.expand_or_jump()
-	end
+vim.keymap.set({ 'i', 's' }, '<C-k>', function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-	if luasnip.jumpable(-1) then
-		luasnip.jump(-1)
-	end
+vim.keymap.set({ 'i', 's' }, '<C-j>', function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
 end, { silent = true })
 
-vim.keymap.set("i", "<C-l>", function()
-	if luasnip.choice_active() then
-		luasnip.change_choice(1)
-	end
+vim.keymap.set('i', '<C-l>', function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(1)
+  end
 end)
