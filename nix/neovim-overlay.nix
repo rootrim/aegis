@@ -51,7 +51,7 @@ let
     nvim-lspconfig
     # ^ lsp extensions
     # formatting
-    conform-nvim # Conform formatter 
+    conform-nvim # Conform formatter
     # ^ formatting
     # git integration plugins
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
@@ -80,12 +80,14 @@ let
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     nvim-colorizer-lua # Colorizer for neovim
+    indent-blankline-nvim # Indetation for neovim
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception # Prevent nested neovim sessions | nvim-unception
     # ^ Useful utilities
     # libraries that other plugins depend on
     mini-nvim
+    snacks-nvim
     sqlite-lua
     plenary-nvim
     nvim-web-devicons
@@ -102,6 +104,7 @@ let
     lua-language-server
     nil # nix LSP
     stylua # lua formatter
+    nixfmt # nix formatter
   ];
 in
 {
