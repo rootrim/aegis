@@ -8,13 +8,10 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 
-vim.opt.completeopt = "menu,menuone,noinsert"
+vim.opt.completeopt = { "menu", "menuone", "noinsert"}
 
 cmp.setup({
-	mapping = cmp.mapping.preset.insert({ -- Preset: ^n, ^p, ^y, ^e, you know the drill..
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-	}),
+  mapping = cmp.mapping.preset.insert(),
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -29,37 +26,24 @@ cmp.setup({
     { name = "buffer" },
 	}),
   formatting = {
-    source_names = {
-      nvim_lsp = "(LSP)",
-      emoji = "(Emoji)",
-      path = "(Path)",
-      calc = "(Calc)",
-      cmp_tabnine = "(Tabnine)",
-      vsnip = "(Snippet)",
-      luasnip = "(Snippet)",
-      buffer = "(Buffer)",
-      tmux = "(TMUX)",
-      copilot = "(Copilot)",
-      codeium = "(Codeium)",
-      treesitter = "(TreeSitter)",
-    },
-    duplicates_default = 0,
-    format = lspkind.cmp_format({
-      mode = 'symbol',
-      maxwidth = {
-        menu = 50,
-        abbr = 50,
-      },
-      ellipsis_char = '...',
-      show_labelDetails = true,
+    format = lspkind.cmp_format {
+      mode = 'symbol_text',
+      with_text = true,
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
-      before = function (entry, vim_item)
-        --- ...
-        -- vim_item.kind = "H"
-        return vim_item
-      end
-    })
-  }
+      menu = {
+        buffer = '[BUF]',
+        nvim_lsp = '[LSP]',
+        nvim_lsp_signature_help = '[LSP]',
+        nvim_lsp_document_symbol = '[LSP]',
+        nvim_lua = '[API]',
+        path = '[PATH]',
+        luasnip = '[SNIP]',
+        copilot = '[AI]'
+      },
+    },
+  },
 
 })
 
@@ -71,20 +55,20 @@ cmp.event:on(
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-  }
+    { name = 'nvim_lsp_document_symbol' },
+    { name = 'buffer' },
+    { name = 'cmdline_history' },
+  },
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' },
     { name = 'cmdline_history' },
-  }, {
     { name = 'cmdline' }
   }),
-  matching = { disallow_symbol_nonprefix_matching = false }
+  -- matching = { disallow_symbol_nonprefix_matching = false }
 })
 
 
