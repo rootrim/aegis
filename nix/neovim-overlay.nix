@@ -68,6 +68,7 @@ let
     # ^ UI
     # language support
     rustaceanvim # Rust support
+    render-markdown-nvim # markdown support
     # ^ language support
     # navigation/editing enhancement plugins
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/

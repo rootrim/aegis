@@ -23,6 +23,7 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'render-markdown' },
   },
   experimental = {
     ghost_text = true,
