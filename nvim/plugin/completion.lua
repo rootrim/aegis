@@ -26,7 +26,6 @@ cmp.setup {
   },
   experimental = {
     ghost_text = true,
-    native_menu = false,
   },
   window = {
     completion = cmp.config.window.bordered(),
@@ -69,25 +68,8 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline_history' },
     { name = 'cmdline' },
   },
-  -- matching = { disallow_symbol_nonprefix_matching = false }
+  matching = { disallow_symbol_nonprefix_matching = false },
 })
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local function enable_and_config(server, config)
-  vim.lsp.enable(server)
-  config['capabilities'] = capabilities
-  vim.lsp.config(server, config)
-end
-
-local servers = {
-  'nil_ls',
-  'lua_ls',
-}
-
-for _, server in ipairs(servers) do
-  enable_and_config(server, {})
-end
 
 vim.keymap.set({ 'i', 's' }, '<C-k>', function()
   if luasnip.expand_or_jumpable() then
