@@ -2,6 +2,7 @@ vim.loader.enable()
 
 local cmd = vim.cmd
 local opt = vim.o
+local lsp = vim.lsp
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -37,6 +38,8 @@ opt.cmdheight = 0
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
+
+lsp.inlay_hint.enable()
 
 -- Configure Neovim diagnostic messages
 
