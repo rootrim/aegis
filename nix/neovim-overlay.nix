@@ -45,6 +45,7 @@ let
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-cmdline # cmp command line suggestions
     cmp-cmdline-history # cmp command line history suggestions
+    copilot-cmp
     # ^ nvim-cmp extensions
     # lsp extensions
     nvim-lspconfig
@@ -69,6 +70,7 @@ let
     # language support
     rustaceanvim # Rust support
     render-markdown-nvim # markdown support
+    copilot-lua # ai support
     # ^ language support
     # navigation/editing enhancement plugins
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -100,6 +102,7 @@ let
     nil # nix LSP
     stylua # lua formatter
     nixfmt-classic # nix formatter
+    nodejs-slim_24
   ];
 in {
   # This is the neovim derivation

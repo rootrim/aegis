@@ -7,3 +7,8 @@ vim.g.did_load_plugins_plugin = true
 -- even with default configs
 
 require('bufferline').setup()
+require('copilot_cmp').setup()
+require('copilot').setup {
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+}
