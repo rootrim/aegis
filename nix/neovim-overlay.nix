@@ -51,7 +51,7 @@ let
     nvim-lspconfig
     # ^ lsp extensions
     # formatting
-    conform-nvim # Conform formatter
+    conform-nvim # Conform for formatting
     # ^ formatting
     # git integration plugins
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
@@ -62,8 +62,6 @@ let
     # ^ telescope and extensions
     # UI
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
-    nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
-    statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
     gruvbox-nvim # gruvbox colorscheme
     neo-tree-nvim # neotree
