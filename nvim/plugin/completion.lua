@@ -18,13 +18,13 @@ cmp.setup {
   },
   sources = cmp.config.sources {
     { name = 'copilot', group_index = 2 },
+    { name = 'render-markdown', group_index = 2 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'nvim_lsp_signature_help', group_index = 2 },
     { name = 'nvim_lua', group_index = 2 },
     { name = 'luasnip', group_index = 2 },
     { name = 'path', group_index = 2 },
     { name = 'buffer', group_index = 2 },
-    { name = 'render-markdown', group_index = 2 },
   },
   experimental = {
     ghost_text = true,
@@ -37,9 +37,11 @@ cmp.setup {
     format = lspkind.cmp_format {
       mode = 'symbol_text',
       with_text = true,
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      maxwidth = {
+        menu = 50,
+        abbr = 50,
+      },
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-      -- symbol_map = { Copilot = '' },
 
       menu = {
         buffer = '[BUF]',
