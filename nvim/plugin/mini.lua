@@ -9,6 +9,9 @@ require('mini.ai').setup()
 require('mini.move').setup()
 require('mini.keymap').setup()
 require('mini.pairs').setup()
+-- require('mini.icons').setup()
+-- require('mini.snippets').setup()
+-- require('mini.completion').setup()
 
 local map_multistep = require('mini.keymap').map_multistep
 map_multistep('i', '<CR>', { 'minipairs_cr' })
