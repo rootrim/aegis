@@ -3,6 +3,10 @@ local Snacks = require('snacks')
 Snacks.setup {
   bigfile = { enabled = true },
   statuscolumn = { enabled = true },
+  quickfile = { enabled = true },
+  indent = { enabled = true },
+  image = { enabled = true },
+  notifier = { enabled = true },
   dashboard = {
     enabled = true,
     width = 60,
@@ -38,6 +42,10 @@ Snacks.setup {
   },
 }
 
-vim.keymap.set('n', '<leader>gg', function()
-  Snacks.lazygit()
-end, { desc = 'Open Lazygit' })
+local function map(mode, mapping, func, opts)
+  vim.keymap.set(mode, mapping, function()
+    func()
+  end, opts)
+end
+
+map('n', '<leader>gg', Snacks.lazygit, { desc = 'Open Lazygit' })

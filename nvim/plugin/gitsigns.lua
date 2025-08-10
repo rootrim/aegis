@@ -19,7 +19,7 @@ vim.schedule(function()
         vim.keymap.set(mode, l, r, opts)
       end
 
-      map('n', '<leader>glb', gs.toggle_current_line_blame, { desc = '[g]it toggle current [l]ine [b]lame' })
+      map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = '[g]it toggle current [l]ine [b]lame' })
       map('n', '<leader>td', gs.toggle_deleted, { desc = 'git [t]oggle [d]eleted' })
     end,
   }
