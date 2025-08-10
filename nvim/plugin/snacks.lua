@@ -1,3 +1,7 @@
+if vim.g.did_load_snacks_plugin then
+  return
+end
+vim.g.did_load_snacks_plugin = true
 local Snacks = require('snacks')
 
 Snacks.setup {
@@ -49,3 +53,4 @@ local function map(mode, mapping, func, opts)
 end
 
 map('n', '<leader>gg', Snacks.lazygit, { desc = 'Open Lazygit' })
+map('n', '<leader>z', Snacks.zen, { desc = 'Toggle zen mode' })
