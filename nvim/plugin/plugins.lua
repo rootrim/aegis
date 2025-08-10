@@ -8,4 +8,3 @@ vim.g.did_load_plugins_plugin = true
 
 require('nvim-surround').setup()
 require('bufferline').setup()
-require('colorizer').setup()
