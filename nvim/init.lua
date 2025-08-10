@@ -53,10 +53,10 @@ vim.diagnostic.config {
         return prefix_diagnostic('󰅚', diagnostic)
       end
       if severity == vim.diagnostic.severity.WARN then
-        return prefix_diagnostic('⚠', diagnostic)
+        return prefix_diagnostic('', diagnostic)
       end
       if severity == vim.diagnostic.severity.INFO then
-        return prefix_diagnostic('ⓘ', diagnostic)
+        return prefix_diagnostic('', diagnostic)
       end
       if severity == vim.diagnostic.severity.HINT then
         return prefix_diagnostic('󰌶', diagnostic)
@@ -68,8 +68,8 @@ vim.diagnostic.config {
     text = {
       -- Requires Nerd fonts
       [vim.diagnostic.severity.ERROR] = '󰅚',
-      [vim.diagnostic.severity.WARN] = '⚠',
-      [vim.diagnostic.severity.INFO] = 'ⓘ',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
       [vim.diagnostic.severity.HINT] = '󰌶',
     },
   },
