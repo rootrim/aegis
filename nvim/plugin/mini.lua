@@ -13,6 +13,8 @@ require('mini.icons').setup()
 require('mini.extra').setup()
 require('mini.cursorword').setup()
 require('mini.splitjoin').setup()
+require('mini.surround').setup()
+
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup {
   highlighters = {
