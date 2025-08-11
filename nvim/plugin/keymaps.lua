@@ -6,7 +6,6 @@ vim.g.did_load_keymaps_plugin = true
 local api = vim.api
 local fn = vim.fn
 local keymap = vim.keymap
-local diagnostic = vim.diagnostic
 
 -- Yank from current position till end of current line
 keymap.set('n', 'Y', 'y$', { silent = true, desc = '[Y]ank to end of line' })
@@ -128,41 +127,6 @@ end, { expr = true, desc = "expand to current buffer's directory" })
 
 keymap.set('n', '<leader>tn', vim.cmd.tabnew, { desc = '[t]ab: [n]ew' })
 keymap.set('n', '<leader>tq', vim.cmd.tabclose, { desc = '[t]ab: [q]uit/close' })
-
-local severity = diagnostic.severity
-
-keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous [d]iagnostic' })
-keymap.set('n', ']d', diagnostic.goto_next, { noremap = true, silent = true, desc = 'next [d]iagnostic' })
-keymap.set('n', '[e', function()
-  diagnostic.goto_prev {
-    severity = severity.ERROR,
-  }
-end, { noremap = true, silent = true, desc = 'previous [e]rror diagnostic' })
-keymap.set('n', ']e', function()
-  diagnostic.goto_next {
-    severity = severity.ERROR,
-  }
-end, { noremap = true, silent = true, desc = 'next [e]rror diagnostic' })
-keymap.set('n', '[w', function()
-  diagnostic.goto_prev {
-    severity = severity.WARN,
-  }
-end, { noremap = true, silent = true, desc = 'previous [w]arning diagnostic' })
-keymap.set('n', ']w', function()
-  diagnostic.goto_next {
-    severity = severity.WARN,
-  }
-end, { noremap = true, silent = true, desc = 'next [w]arning diagnostic' })
-keymap.set('n', '[h', function()
-  diagnostic.goto_prev {
-    severity = severity.HINT,
-  }
-end, { noremap = true, silent = true, desc = 'previous [h]int diagnostic' })
-keymap.set('n', ']h', function()
-  diagnostic.goto_next {
-    severity = severity.HINT,
-  }
-end, { noremap = true, silent = true, desc = 'next [h]int diagnostic' })
 
 keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move [d]own half-page and center' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
