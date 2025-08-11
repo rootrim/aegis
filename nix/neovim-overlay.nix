@@ -83,6 +83,7 @@ let
     # Useful utilities
     nvim-unception # Prevent nested neovim sessions | nvim-unception
     undotree # Undo tree
+    trouble-nvim # Trouble.nvim
     # ^ Useful utilities
     # libraries that other plugins depend on
     mini-nvim
