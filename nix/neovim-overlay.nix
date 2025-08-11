@@ -71,6 +71,7 @@ let
     rustaceanvim # Rust support
     render-markdown-nvim # markdown support
     copilot-lua # ai support
+    lazydev-nvim # lazydev.nvim
     # ^ language support
     # navigation/editing enhancement plugins
     # vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -81,6 +82,7 @@ let
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception # Prevent nested neovim sessions | nvim-unception
+    undotree # Undo tree
     # ^ Useful utilities
     # libraries that other plugins depend on
     mini-nvim
