@@ -169,6 +169,31 @@ keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
 keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move DOWN [f]ull-page and center' })
 keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
 
+api.nvim_create_autocmd('LspAttach', {
+  callback = function(event)
+    local bufmap = function(mode, rhs, lhs, cfg)
+      cfg = cfg or {}
+      vim.tbl_deep_extend('keep', cfg, {
+        buffer = event.buf,
+        silent = true,
+        desc = 'LSP: ' .. (cfg.desc or rhs),
+      })
+      vim.keymap.set(mode, rhs, lhs, cfg)
+    end
+
+    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'LSP: hover' })
+    bufmap('n', 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'LSP: references' })
+    bufmap('n', 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'LSP: implementation' })
+    bufmap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'LSP: rename' })
+    bufmap('n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'LSP: code action' })
+    bufmap('n', 'grt', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'LSP: code definition' })
+    bufmap('n', 'gO', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { desc = 'LSP: document symbol' })
+    bufmap({ 'i', 's' }, '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', {
+      desc = 'LSP: signature help',
+    })
+  end,
+})
+
 --- Disabled keymaps [enable at your own risk]
 
 -- Automatic management of search highlight
