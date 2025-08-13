@@ -18,7 +18,8 @@ let
 
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+    luasnip
+    friendly-snippets
     # nvim-cmp (autocompletion) and extensions
     nvim-cmp
     cmp_luasnip
