@@ -19,7 +19,7 @@ opt.lazyredraw = true
 opt.showmatch = true
 opt.incsearch = true
 opt.hlsearch = true
-opt.clipboardname = 'unnamedplus'
+opt.clipboard = 'unnamedplus'
 
 opt.spell = false
 opt.spelllang = 'en'
