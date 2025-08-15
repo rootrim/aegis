@@ -81,7 +81,7 @@ Directory structure:
 [lua-url]: https://www.lua.org/
 [license-shield]: https://img.shields.io/github/license/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
 [license-url]: https://github.com/rootrim/aegis/blob/main/LICENSE
-[issues-shield]: https://img.shields.io/github/issues/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/rootrim/aegis.svg?style=for-the-badge
 [issues-url]: https://github.com/rootrim/aegis/issues
 [license-shield]: https://img.shields.io/github/license/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
 [license-url]: https://github.com/nix-community/kickstart-nix.nvim/blob/master/LICENSE
