@@ -3,6 +3,8 @@ if vim.g.did_load_lualine_plugin then
 end
 vim.g.did_load_lualine_plugin = true
 
+local theme = require('gruvbox-material.lualine').theme('medium')
+
 ---Indicators for special modes,
 ---@return string status
 local function extra_mode_status()
@@ -33,7 +35,7 @@ require('lualine').setup {
     },
   },
   options = {
-    theme = 'auto',
+    theme = theme,
   },
   -- Example top tabline configuration (this may clash with other plugins)
   -- tabline = {
