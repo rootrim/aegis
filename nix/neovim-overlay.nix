@@ -49,7 +49,7 @@ let
     # UI
     lualine-nvim
     nvim-treesitter-context
-    gruvbox-nvim
+    gruvbox-material-nvim
     neo-tree-nvim
     bufferline-nvim
     # ^ UI
