@@ -7,6 +7,7 @@ vim.g.did_load_plugins_plugin = true
 -- even with default configs
 
 require('bufferline').setup()
+require('hardtime').setup()
 require('copilot_cmp').setup()
 require('copilot').setup {
   suggestion = { enabled = false },

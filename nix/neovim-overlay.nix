@@ -65,6 +65,7 @@ let
     nvim-treesitter-textobjects
     nvim-ts-context-commentstring
     nvim-parinfer
+    hardtime-nvim
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception
