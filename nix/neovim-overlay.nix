@@ -20,19 +20,11 @@ let
     nvim-treesitter.withAllGrammars
     luasnip
     friendly-snippets
-    # nvim-cmp (autocompletion) and extensions
-    nvim-cmp
-    cmp_luasnip
-    lspkind-nvim
-    cmp-nvim-lsp
-    cmp-nvim-lsp-signature-help
-    cmp-buffer
-    cmp-path
-    cmp-nvim-lua
-    cmp-cmdline
-    cmp-cmdline-history
-    copilot-cmp
-    # ^ nvim-cmp extensions
+    # (autocompletion) and extensions
+    blink-cmp
+    blink-copilot
+    colorful-menu-nvim
+    # ^ cmp extensions
     # lsp extensions
     nvim-lspconfig
     # ^ lsp extensions

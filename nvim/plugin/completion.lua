@@ -3,95 +3,84 @@ if vim.g.did_load_completion_plugin then
 end
 vim.g.did_load_completion_plugin = true
 
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-local luasnip = require('luasnip')
+local colorful_menu = require('colorful-menu')
+local blink = require('blink.cmp')
 require('luasnip.loaders.from_vscode').lazy_load()
+require('copilot').setup {
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+}
 
-vim.opt.completeopt = { 'menu', 'menuone', 'noinsert' }
+blink.setup {
+  completion = {
+    ghost_text = { enabled = true },
 
-cmp.setup {
-  mapping = cmp.mapping.preset.insert(),
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  sources = cmp.config.sources {
-    { name = 'copilot', group_index = 2 },
-    { name = 'render-markdown', group_index = 2 },
-    { name = 'lazydev', group_index = 2 },
-    { name = 'nvim_lsp', group_index = 2 },
-    { name = 'nvim_lsp_signature_help', group_index = 2 },
-    { name = 'nvim_lua', group_index = 2 },
-    { name = 'luasnip', group_index = 2 },
-    { name = 'path', group_index = 2 },
-    { name = 'buffer', group_index = 2 },
-  },
-  experimental = {
-    ghost_text = true,
-  },
-  window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
-  },
-  formatting = {
-    format = lspkind.cmp_format {
-      mode = 'symbol_text',
-      with_text = true,
-      maxwidth = {
-        menu = 50,
-        abbr = 50,
-      },
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 0,
+    },
 
-      menu = {
-        buffer = '[BUF]',
-        nvim_lsp = '[LSP]',
-        nvim_lsp_signature_help = '[LSP]',
-        nvim_lsp_document_symbol = '[LSP]',
-        nvim_lua = '[API]',
-        path = '[PATH]',
-        luasnip = '[SNIP]',
-        copilot = '[AI]',
+    keyword = {
+      range = 'full',
+    },
+
+    menu = {
+      direction_priority = function()
+        local ctx = blink.get_context()
+        local item = blink.get_selected_item()
+        if ctx == nil or item == nil then
+          return { 's', 'n' }
+        end
+
+        local item_text = item.textEdit ~= nil and item.textEdit.newText or item.insertText or item.label
+        local is_multi_line = item_text:find('\n') ~= nil
+
+        if is_multi_line or vim.g.blink_cmp_upwards_ctx_id == ctx.id then
+          vim.g.blink_cmp_upwards_ctx_id = ctx.id
+          return { 'n', 's' }
+        end
+        return { 's', 'n' }
+      end,
+      draw = {
+        columns = { { 'label', gap = 1 }, { 'kind_icon' }, { 'kind' } },
+        components = {
+          label = {
+            text = function(ctx)
+              return colorful_menu.blink_components_text(ctx)
+            end,
+            highlight = function(ctx)
+              return colorful_menu.blink_components_highlight(ctx)
+            end,
+          },
+        },
       },
     },
   },
-}
-
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
+  signature = {
+    enabled = true,
+  },
   sources = {
-    { name = 'nvim_lsp_document_symbol' },
-    { name = 'buffer' },
-    { name = 'cmdline_history' },
+    default = { 'lazydev', 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
+    providers = {
+      copilot = {
+        name = 'copilot',
+        module = 'blink-copilot',
+        score_offset = 100,
+        async = true,
+      },
+      lazydev = {
+        name = 'LazyDev',
+        module = 'lazydev.integrations.blink',
+        score_offset = 100,
+      },
+    },
   },
-})
-
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources {
-    { name = 'path' },
-    { name = 'cmdline_history' },
-    { name = 'cmdline' },
+  snippets = {
+    preset = 'luasnip',
   },
-  matching = { disallow_symbol_nonprefix_matching = false },
-})
-
-vim.keymap.set({ 'i', 's' }, '<C-k>', function()
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  end
-end, { silent = true })
-
-vim.keymap.set({ 'i', 's' }, '<C-j>', function()
-  if luasnip.jumpable(-1) then
-    luasnip.jump(-1)
-  end
-end, { silent = true })
-
-vim.keymap.set('i', '<C-l>', function()
-  if luasnip.choice_active() then
-    luasnip.change_choice(1)
-  end
-end)
+  cmdline = {
+    keymap = { preset = 'inherit' },
+    completion = { menu = { auto_show = true } },
+  },
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
+}
