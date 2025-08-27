@@ -5,6 +5,7 @@ vim.g.did_load_completion_plugin = true
 
 local colorful_menu = require('colorful-menu')
 local blink = require('blink.cmp')
+local ls = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 require('copilot').setup {
   suggestion = { enabled = false },
@@ -84,3 +85,19 @@ blink.setup {
   },
   fuzzy = { implementation = 'prefer_rust_with_warning' },
 }
+
+vim.keymap.set({ 'i' }, '<C-K>', function()
+  ls.expand {}
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+  ls.jump(1)
+end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<C-J>', function()
+  ls.jump(-1)
+end, { silent = true })
+
+vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, { silent = true })
