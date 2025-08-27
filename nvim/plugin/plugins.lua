@@ -10,6 +10,8 @@ require('bufferline').setup()
 require('hardtime').setup()
 require('copilot_cmp').setup()
 require('copilot').setup {
-  suggestion = { enabled = false },
+  suggestion = { enabled = true },
   panel = { enabled = false },
 }
+require('colorizer').setup()
+require('todo-comments').setup()

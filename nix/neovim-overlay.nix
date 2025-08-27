@@ -50,7 +50,9 @@ let
     lualine-nvim
     nvim-treesitter-context
     gruvbox-material-nvim
+    kanagawa-nvim # sometimes just for mood
     neo-tree-nvim
+    oil-nvim
     bufferline-nvim
     # ^ UI
     # language support
@@ -71,6 +73,8 @@ let
     nvim-unception
     undotree
     trouble-nvim
+    nvim-colorizer-lua
+    todo-comments-nvim
     # ^ Useful utilities
     # libraries that other plugins depend on
     mini-nvim
