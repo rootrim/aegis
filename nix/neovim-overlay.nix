@@ -80,6 +80,7 @@ let
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
+    vim-wakatime
   ];
 
   extraPackages = with pkgs; [
