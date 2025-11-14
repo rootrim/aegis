@@ -8,7 +8,7 @@
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+  outputs = inputs@{ nixpkgs, flake-utils, ... }:
     let
       systems = builtins.attrNames nixpkgs.legacyPackages;
 

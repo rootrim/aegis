@@ -85,11 +85,24 @@ let
 
   extraPackages = with pkgs; [
     # language servers, etc.
+    prettier
     lua-language-server
     nil
+    nixd
     stylua
     nixfmt-classic
     nodejs-slim_24
+    rust-analyzer
+    clippy
+    zls
+    zig
+    shfmt
+    bash-language-server
+    shellcheck
+    codebook
+    clang-tools
+    fish-lsp
+    kdePackages.qtdeclarative
   ];
 in {
   nvim-pkg = mkNeovim {

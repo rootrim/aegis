@@ -4,6 +4,4 @@ require('lazydev').setup {
   },
 }
 
-local lsp = require('user.lsp')
-
-lsp.enable_and_config('lua_ls', {})
+require('user.lsp').enable_and_config('lua_ls', {})
