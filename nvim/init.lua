@@ -20,6 +20,9 @@ opt.showmatch = true
 opt.incsearch = true
 opt.hlsearch = true
 opt.clipboard = 'unnamedplus'
+opt.ignorecase = true
+opt.smartcase = true
+opt.inccommand = 'split'
 
 opt.spell = false
 opt.spelllang = 'en'
@@ -36,6 +39,7 @@ opt.undofile = true
 opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 0
+opt.scrolloff = 25
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
