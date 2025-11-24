@@ -94,6 +94,7 @@ let
     nodejs-slim_24
     rust-analyzer
     clippy
+    rustfmt
     zls
     zig
     shfmt
