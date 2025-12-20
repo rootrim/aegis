@@ -43,7 +43,6 @@ let
     nvim-treesitter-context
     gruvbox-material-nvim
     kanagawa-nvim # sometimes just for mood
-    neo-tree-nvim
     oil-nvim
     bufferline-nvim
     # ^ UI
