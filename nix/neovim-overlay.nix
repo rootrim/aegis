@@ -1,7 +1,5 @@
-{ inputs }:
-final: prev:
-with final.pkgs.lib;
-let
+{inputs}: final: prev:
+with final.pkgs.lib; let
   pkgs = final;
 
   # mkNvimPlugin = src: pname:
@@ -53,7 +51,6 @@ let
     lazydev-nvim
     # ^ language support
     # navigation/editing enhancement plugins
-    # vim-unimpaired 
     eyeliner-nvim
     nvim-treesitter-textobjects
     nvim-ts-context-commentstring
@@ -83,7 +80,7 @@ let
   ];
 
   extraPackages = with pkgs; [
-    # language servers, etc.
+    # language servers, formatters, etc.
     prettier
     lua-language-server
     nil
@@ -117,5 +114,5 @@ in {
     wrapRc = false;
   };
 
-  nvim-luarc-json = final.mk-luarc-json { plugins = all-plugins; };
+  nvim-luarc-json = final.mk-luarc-json {plugins = all-plugins;};
 }

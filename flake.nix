@@ -1,36 +1,38 @@
 {
-  description =
-    "The Shield of those who wants to code in Neovim with the power of Gods of Olimpus";
+  description = "The Shield of those who wants to code in Neovim with the power of Gods of Olimpus";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
   };
 
-  outputs = inputs@{ nixpkgs, flake-utils, ... }:
-    let
-      systems = builtins.attrNames nixpkgs.legacyPackages;
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
-      # This is where the Neovim derivation is built.
-      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-    in flake-utils.lib.eachSystem systems (system:
-      let
-        pkgs = import nixpkgs {
+      perSystem = {
+        system,
+        pkgs,
+        ...
+      }: let
+        neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
+        pkgs' = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
             neovim-overlay
-            # This adds a function can be used to generate a .luarc.json
-            # containing the Neovim API all plugins in the workspace directory.
-            # The generated file can be symlinked in the devShell's shellHook.
             inputs.gen-luarc.overlays.default
           ];
         };
-        shell = pkgs.mkShell {
+      in {
+        packages = {
+          default = pkgs'.nvim-pkg;
+          nvim = pkgs'.nvim-pkg;
+        };
+
+        devShells.default = pkgs'.mkShell {
           name = "nvim-devShell";
-          buildInputs = with pkgs; [
-            # Tools for Lua and Nix development, useful for editing files in this repo
+          buildInputs = with pkgs'; [
             lua-language-server
             nil
             stylua
@@ -38,20 +40,16 @@
             nvim-dev
           ];
           shellHook = ''
-            # symlink the .luarc.json generated in the overlay
-            ln -fs ${pkgs.nvim-luarc-json} .luarc.json
-            # allow quick iteration of lua configs
+            ln -fs ${pkgs'.nvim-luarc-json} .luarc.json
             ln -Tfns $PWD/nvim ~/.config/nvim-dev
           '';
         };
-      in {
-        packages = rec {
-          default = nvim;
-          nvim = pkgs.nvim-pkg;
-        };
-        devShells = { default = shell; };
-      }) // {
-        # You can add this overlay to your NixOS configuration
-        overlays.default = neovim-overlay;
+
+        formatter = pkgs'.alejandra;
       };
+
+      flake = {
+        overlays.default = import ./nix/neovim-overlay.nix {inherit inputs;};
+      };
+    };
 }
