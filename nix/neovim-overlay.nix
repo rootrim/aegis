@@ -89,7 +89,7 @@ let
     nil
     nixd
     stylua
-    nixfmt-classic
+    alejandra
     nodejs-slim_24
     rust-analyzer
     clippy

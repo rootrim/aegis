@@ -1,6 +1,6 @@
 {
   description =
-    "The Shield of those who wants to code in Neovim with the gods of Olimpus";
+    "The Shield of those who wants to code in Neovim with the power of Gods of Olimpus";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

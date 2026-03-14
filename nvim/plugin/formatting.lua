@@ -6,7 +6,7 @@ vim.g.did_load_formatter_plugin = true
 require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
-    nix = { 'nixfmt' },
+    nix = { 'alejandra' },
     html = { 'prettier' },
     zig = { 'zigfmt' },
     sh = { 'shfmt' },
