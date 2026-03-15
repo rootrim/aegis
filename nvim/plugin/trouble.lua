@@ -4,22 +4,16 @@ end
 vim.g.did_load_trouble_plugin = true
 
 require('trouble').setup()
+local bind = require('user.bind').bind
 
-local function map(mode, lhs, rhs, opts)
-  opts = opts or {}
-  opts.silent = true
-  opts.noremap = true
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-end
-
-map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (Trouble)' })
-map('n', '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'Buffer Diagnostics (Trouble)' })
-map('n', '<leader>cs', '<cmd>Trouble symbols toggle focus=false<cr>', { desc = 'Symbols (Trouble)' })
-map(
+bind('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', 'Diagnostics (Trouble)')
+bind('n', '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', 'Buffer Diagnostics (Trouble)')
+bind('n', '<leader>cs', '<cmd>Trouble symbols toggle focus=false<cr>', 'Symbols (Trouble)')
+bind(
   'n',
   '<leader>cl',
   '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-  { desc = 'LSP Definitions / references / ... (Trouble)' }
+  'LSP Definitions / references / ... (Trouble)'
 )
-map('n', '<leader>xL', '<cmd>Trouble loclist toggle<cr>', { desc = 'Location List (Trouble)' })
-map('n', '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', { desc = 'Quickfix List (Trouble)' })
+bind('n', '<leader>xL', '<cmd>Trouble loclist toggle<cr>', 'Location List (Trouble)')
+bind('n', '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', 'Quickfix List (Trouble)')

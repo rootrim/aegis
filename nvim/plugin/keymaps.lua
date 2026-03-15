@@ -5,19 +5,20 @@ vim.g.did_load_keymaps_plugin = true
 
 local api = vim.api
 local fn = vim.fn
-local keymap = vim.keymap
+local bind = require('user.bind').bind
+local bindbf = require('user.bind').bindbf
 
 -- Yank from current position till end of current line
-keymap.set('n', 'Y', 'y$', { silent = true, desc = '[Y]ank to end of line' })
+bind('n', 'Y', 'y$', '[Y]ank to end of line')
 
 -- Buffer list navigation
-keymap.set('n', '[b', vim.cmd.bprevious, { silent = true, desc = 'previous [b]uffer' })
-keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next [b]uffer' })
-keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first [B]uffer' })
-keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last [B]uffer' })
+bind('n', '[b', '<cmd>bprevious<cr>', 'previous [b]uffer')
+bind('n', ']b', '<cmd>bnext<cr>', 'next [b]uffer')
+bind('n', '[B', '<cmd>bfirst<cr>', 'first [B]uffer')
+bind('n', ']B', '<cmd>blast<cr>', 'last [B]uffer')
 
 -- Undo tree
-vim.keymap.set('n', '<leader>U', vim.cmd.UndotreeToggle, { desc = '[U]ndo tree toggle' })
+bind('n', '<leader>U', '<cmd>UndotreeToggle<cr>', '[U]ndo tree toggle')
 
 -- Toggle the quickfix list (only opens if it is populated)
 local function toggle_qf_list()
@@ -36,7 +37,7 @@ local function toggle_qf_list()
   end
 end
 
-keymap.set('n', '<C-c>', toggle_qf_list, { desc = 'toggle quickfix list' })
+bind('n', '<C-c>', toggle_qf_list, 'toggle quickfix list')
 
 local function try_fallback_notify(opts)
   local success, _ = pcall(opts.try)
@@ -67,10 +68,10 @@ local function cright()
   }
 end
 
-keymap.set('n', '[c', cleft, { silent = true, desc = '[c]ycle quickfix left' })
-keymap.set('n', ']c', cright, { silent = true, desc = '[c]ycle quickfix right' })
-keymap.set('n', '[C', vim.cmd.cfirst, { silent = true, desc = 'first quickfix entry' })
-keymap.set('n', ']C', vim.cmd.clast, { silent = true, desc = 'last quickfix entry' })
+bind('n', '[c', cleft, '[c]ycle quickfix left')
+bind('n', ']c', cright, '[c]ycle quickfix right')
+bind('n', '[C', vim.cmd.cfirst, 'first quickfix entry')
+bind('n', ']C', vim.cmd.clast, 'last quickfix entry')
 
 local function lleft()
   try_fallback_notify {
@@ -88,85 +89,60 @@ local function lright()
   }
 end
 
-keymap.set('n', '[l', lleft, { silent = true, desc = 'cycle [l]oclist left' })
-keymap.set('n', ']l', lright, { silent = true, desc = 'cycle [l]oclist right' })
-keymap.set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first [L]oclist entry' })
-keymap.set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last [L]oclist entry' })
+bind('n', '[l', lleft, 'cycle [l]oclist left')
+bind('n', ']l', lright, 'cycle [l]oclist right')
+bind('n', '[L', vim.cmd.lfirst, 'first [L]oclist entry')
+bind('n', ']L', vim.cmd.llast, 'last [L]oclist entry')
 
 -- Resize vertical splits
 local toIntegral = math.ceil
-keymap.set('n', '<leader>w+', function()
+bind('n', '<leader>w+', function()
   local curWinWidth = api.nvim_win_get_width(0)
   api.nvim_win_set_width(0, toIntegral(curWinWidth * 3 / 2))
-end, { silent = true, desc = 'inc window [w]idth' })
-keymap.set('n', '<leader>w-', function()
+end, 'inc window [w]idth')
+bind('n', '<leader>w-', function()
   local curWinWidth = api.nvim_win_get_width(0)
   api.nvim_win_set_width(0, toIntegral(curWinWidth * 2 / 3))
-end, { silent = true, desc = 'dec window [w]idth' })
-keymap.set('n', '<leader>h+', function()
+end, 'dec window [w]idth')
+bind('n', '<leader>h+', function()
   local curWinHeight = api.nvim_win_get_height(0)
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 3 / 2))
-end, { silent = true, desc = 'inc window [h]eight' })
-keymap.set('n', '<leader>h-', function()
+end, 'inc window [h]eight')
+bind('n', '<leader>h-', function()
   local curWinHeight = api.nvim_win_get_height(0)
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
-end, { silent = true, desc = 'dec window [h]eight' })
+end, 'dec window [h]eight')
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
-keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
-keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
+bind('t', '<Esc>', '<C-\\><C-n>', 'switch to normal mode')
+bind('t', '<C-Esc>', '<Esc>', 'send Esc to terminal')
 
 -- Shortcut for expanding to current buffer's directory in command mode
-keymap.set('c', '%%', function()
+bind('c', '%%', function()
   if fn.getcmdtype() == ':' then
     return fn.expand('%:h') .. '/'
   else
     return '%%'
   end
-end, { expr = true, desc = "expand to current buffer's directory" })
+end, "expand to current buffer's directory", { expr = true })
 
-keymap.set('n', '<leader>tn', vim.cmd.tabnew, { desc = '[t]ab: [n]ew' })
-keymap.set('n', '<leader>tq', vim.cmd.tabclose, { desc = '[t]ab: [q]uit/close' })
+bind('n', '<leader>tn', vim.cmd.tabnew, '[t]ab: [n]ew')
+bind('n', '<leader>tq', vim.cmd.tabclose, '[t]ab: [q]uit/close')
 
-keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move [d]own half-page and center' })
-keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
-keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move DOWN [f]ull-page and center' })
-keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
+bind('n', '<C-d>', '<C-d>zz', 'move [d]own half-page and center')
+bind('n', '<C-u>', '<C-u>zz', 'move [u]p half-page and center')
+bind('n', '<C-f>', '<C-f>zz', 'move DOWN [f]ull-page and center')
+bind('n', '<C-b>', '<C-b>zz', 'move UP full-page and center')
 
 api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
-    local bufmap = function(mode, rhs, lhs, cfg)
-      cfg = cfg or {}
-      vim.tbl_deep_extend('keep', cfg, {
-        buffer = event.buf,
-        silent = true,
-        desc = 'LSP: ' .. (cfg.desc or rhs),
-      })
-      vim.keymap.set(mode, rhs, lhs, cfg)
-    end
-
-    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'LSP: hover' })
-    bufmap('n', 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'LSP: references' })
-    bufmap('n', 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'LSP: implementation' })
-    bufmap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'LSP: rename' })
-    bufmap('n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'LSP: code action' })
-    bufmap('n', 'grt', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'LSP: code definition' })
-    bufmap('n', 'gO', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { desc = 'LSP: document symbol' })
-    bufmap({ 'i', 's' }, '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', {
-      desc = 'LSP: signature help',
-    })
+    bindbf(event.buf, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', 'LSP: hover')
+    bindbf(event.buf, 'n', 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', 'LSP: references')
+    bindbf(event.buf, 'n', 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', 'LSP: implementation')
+    bindbf(event.buf, 'n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>', 'LSP: rename')
+    bindbf(event.buf, 'n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>', 'LSP: code action')
+    bindbf(event.buf, 'n', 'grt', '<cmd>lua vim.lsp.buf.definition()<cr>', 'LSP: code definition')
+    bindbf(event.buf, 'n', 'gO', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', 'LSP: document symbol')
+    bindbf(event.buf, { 'i', 's' }, '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'LSP: signature help')
   end,
 })
-
---- Disabled keymaps [enable at your own risk]
-
--- Automatic management of search highlight
--- XXX: This is not so nice if you use j/k for navigation
--- (you should be using <C-d>/<C-u> and relative line numbers instead ;)
---
--- local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
--- vim.on_key(function(char)
---   if vim.fn.mode() == 'n' then
---     vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
---   end
--- end, auto_hlsearch_namespace)
