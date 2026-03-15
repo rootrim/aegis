@@ -12,13 +12,13 @@ local bindbf = require('user.bind').bindbf
 bind('n', 'Y', 'y$', '[Y]ank to end of line')
 
 -- Buffer list navigation
-bind('n', '[b', '<cmd>bprevious<cr>', 'previous [b]uffer')
-bind('n', ']b', '<cmd>bnext<cr>', 'next [b]uffer')
-bind('n', '[B', '<cmd>bfirst<cr>', 'first [B]uffer')
-bind('n', ']B', '<cmd>blast<cr>', 'last [B]uffer')
+bind('n', '[b', vim.cmd.bprevious, 'previous [b]uffer')
+bind('n', ']b', vim.cmd.bnext, 'next [b]uffer')
+bind('n', '[B', vim.cmd.bfirst, 'first [b]uffer')
+bind('n', ']B', vim.cmd.blast, 'last [b]uffer')
 
 -- Undo tree
-bind('n', '<leader>U', '<cmd>UndotreeToggle<cr>', '[U]ndo tree toggle')
+bind('n', '<leader>U', '<cmd>UndotreeToggle<cr>', '[u]ndo tree toggle')
 
 -- Toggle the quickfix list (only opens if it is populated)
 local function toggle_qf_list()
@@ -38,6 +38,9 @@ local function toggle_qf_list()
 end
 
 bind('n', '<C-c>', toggle_qf_list, 'toggle quickfix list')
+bind('n', '<leader>xc', function()
+  vim.fn.setqflist({})
+end, "Clear quickfix list and location list")
 
 local function try_fallback_notify(opts)
   local success, _ = pcall(opts.try)
@@ -136,13 +139,14 @@ bind('n', '<C-b>', '<C-b>zz', 'move UP full-page and center')
 
 api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
-    bindbf(event.buf, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', 'LSP: hover')
-    bindbf(event.buf, 'n', 'grr', '<cmd>lua vim.lsp.buf.references()<cr>', 'LSP: references')
-    bindbf(event.buf, 'n', 'gri', '<cmd>lua vim.lsp.buf.implementation()<cr>', 'LSP: implementation')
-    bindbf(event.buf, 'n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>', 'LSP: rename')
-    bindbf(event.buf, 'n', 'gra', '<cmd>lua vim.lsp.buf.code_action()<cr>', 'LSP: code action')
-    bindbf(event.buf, 'n', 'grt', '<cmd>lua vim.lsp.buf.definition()<cr>', 'LSP: code definition')
-    bindbf(event.buf, 'n', 'gO', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', 'LSP: document symbol')
-    bindbf(event.buf, { 'i', 's' }, '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'LSP: signature help')
+    local bufnr = event.buf
+    bindbf(bufnr, 'n', 'K', vim.lsp.buf.hover, 'LSP: hover')
+    bindbf(bufnr, 'n', 'grr', vim.lsp.buf.references, 'LSP: references')
+    bindbf(bufnr, 'n', 'gri', vim.lsp.buf.implementation, 'LSP: implementation')
+    bindbf(bufnr, 'n', 'grn', vim.lsp.buf.rename, 'LSP: rename')
+    bindbf(bufnr, 'n', 'gra', vim.lsp.buf.code_action, 'LSP: code action')
+    bindbf(bufnr, 'n', 'grt', vim.lsp.buf.definition, 'LSP: code definition')
+    bindbf(bufnr, 'n', 'gO', vim.lsp.buf.document_symbol, 'LSP: document symbol')
+    bindbf(bufnr, { 'i', 's' }, '<C-s>', vim.lsp.buf.signature_help, 'LSP: signature help')
   end,
 })

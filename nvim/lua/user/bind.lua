@@ -13,10 +13,10 @@ function M.bind(mode, lhs, rhs, desc, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-function M.bindbf(bufnr, mode, l, r, desc, opts)
+function M.bindbf(bufnr, mode, lhs, rhs, desc, opts)
   opts = opts or {}
   opts.buffer = bufnr
-  M.bind(mode, l, r, desc, opts)
+  M.bind(mode, lhs, rhs, desc, opts)
 end
 
 return M

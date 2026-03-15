@@ -3,9 +3,9 @@ if vim.g.did_load_telescope_plugin then
 end
 vim.g.did_load_telescope_plugin = true
 
+local bind = require('user.bind').bind
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-
 local builtin = require('telescope.builtin')
 
 local layout_config = {
@@ -30,29 +30,23 @@ local project_files = function()
   end
 end
 
-vim.keymap.set('n', '<leader>fp', builtin.oldfiles, { desc = '[f]ind [p]revious files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[f]ind words (live [g]rep)' })
-vim.keymap.set('n', '<leader>ff', project_files, { desc = '[f]ind [f]iles' })
-vim.keymap.set('n', '<leader>fq', builtin.quickfix, { desc = '[f]ind [q]uickfix list' })
-vim.keymap.set('n', '<leader>fh', builtin.command_history, { desc = '[f]ind command [h]istory' })
-vim.keymap.set('n', '<leader>fl', builtin.loclist, { desc = '[f]ind [l]oclist' })
-vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = '[f]ind [r]egisters' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[f]ind [b]uffers' })
-vim.keymap.set(
-  'n',
-  '<leader>fcf',
-  builtin.current_buffer_fuzzy_find,
-  { desc = '[f]ind words [c]urrent buffer [f]uzzy' }
-)
--- vim.keymap.set('n', '<leader>td', builtin.lsp_document_symbols, { desc = '[t]elescope lsp [d]ocument symbols' })
--- vim.keymap.set('n', '<leader>to', builtin.lsp_dynamic_workspace_symbols, { desc = '[t]elescope lsp dynamic w[o]rkspace symbols' })
+bind('n', '<leader>fp', builtin.oldfiles, '[F]ind [P]revious files')
+bind('n', '<leader>fg', builtin.live_grep, '[F]ind words (live [G]rep)')
+bind('n', '<leader>ff', project_files, '[F]ind [F]iles')
+bind('n', '<leader>fq', builtin.quickfix, '[F]ind [Q]uickfix list')
+bind('n', '<leader>fh', builtin.command_history, '[F]ind command [H]istory')
+bind('n', '<leader>fl', builtin.loclist, '[F]ind [L]oclist')
+bind('n', '<leader>fr', builtin.registers, '[F]ind [R]egisters')
+bind('n', '<leader>fb', builtin.buffers, '[F]ind [B]uffers')
+bind('n', '<leader>ft', builtin.marks, '[F]ind [M]arks')
+bind('n', '<leader>fz', builtin.current_buffer_fuzzy_find, '[F]ind words current buffer fu[Z]zy')
 
 telescope.setup {
   defaults = {
     path_display = {
       'truncate',
     },
-    layout_strategy = 'vertical',
+    layout_strategy = 'horizontal',
     layout_config = layout_config,
     mappings = {
       i = {

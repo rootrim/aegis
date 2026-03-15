@@ -10,6 +10,7 @@ vim.schedule(function()
     current_line_blame = true,
     current_line_blame_opts = {
       ignore_whitespace = true,
+      delay = 0,
     },
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns

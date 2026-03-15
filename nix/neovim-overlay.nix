@@ -16,7 +16,6 @@ with final.pkgs.lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    luasnip
     friendly-snippets
     # (autocompletion) and extensions
     blink-cmp
@@ -40,7 +39,6 @@ with final.pkgs.lib; let
     lualine-nvim
     nvim-treesitter-context
     gruvbox-material-nvim
-    kanagawa-nvim # sometimes just for mood
     oil-nvim
     bufferline-nvim
     # ^ UI
@@ -55,7 +53,6 @@ with final.pkgs.lib; let
     nvim-treesitter-textobjects
     nvim-ts-context-commentstring
     nvim-parinfer
-    hardtime-nvim
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception
@@ -81,25 +78,21 @@ with final.pkgs.lib; let
 
   extraPackages = with pkgs; [
     # language servers, formatters, etc.
-    prettier
+    alejandra
+    bash-language-server
+    clang-tools
+    clippy
+    fish-lsp
     lua-language-server
     nil
     nixd
-    stylua
-    alejandra
-    nodejs-slim_24
     rust-analyzer
-    clippy
     rustfmt
-    zls
-    zig
-    shfmt
-    bash-language-server
     shellcheck
-    codebook
-    clang-tools
-    fish-lsp
-    kdePackages.qtdeclarative
+    shfmt
+    stylua
+    zig
+    zls
   ];
 in {
   nvim-pkg = mkNeovim {

@@ -40,6 +40,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.cmdheight = 0
 opt.scrolloff = 25
+opt.mouse = ''
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'

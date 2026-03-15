@@ -11,7 +11,7 @@ configs.setup {
   highlight = {
     enable = true,
     disable = function(_, buf)
-      local max_filesize = 1000 * 1024 -- 100 KiB
+      local max_filesize = 100 * 1024 -- 100 KiB
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
       if ok and stats and stats.size > max_filesize then
         return true
@@ -32,7 +32,7 @@ configs.setup {
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- karakter bazlı seçim
-        ['@function.outer'] = 'V', -- satır bazlı seçim
+        ['@function.outer'] = 'V',  -- satır bazlı seçim
         ['@class.outer'] = '<c-v>', -- blok bazlı seçim
       },
     },
