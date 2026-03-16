@@ -15,5 +15,5 @@ bind(
   '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
   'LSP Definitions / references / ... (Trouble)'
 )
-bind('n', '<leader>xL', '<cmd>Trouble loclist toggle<cr>', 'Location List (Trouble)')
-bind('n', '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', 'Quickfix List (Trouble)')
+bind('n', '<leader>xl', '<cmd>Trouble loclist toggle<cr>', 'Location List (Trouble)')
+bind('n', '<leader>xq', '<cmd>Trouble qflist toggle<cr>', 'Quickfix List (Trouble)')
