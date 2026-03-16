@@ -3,5 +3,4 @@ if vim.g.did_load_plugins_plugin then
 end
 vim.g.did_load_plugins_plugin = true
 
-require('bufferline').setup()
 require('colorizer').setup()

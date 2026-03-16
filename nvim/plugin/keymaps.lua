@@ -11,10 +11,6 @@ local bindbf = require('user.bind').bindbf
 -- Yank from current position till end of current line
 bind('n', 'Y', 'y$', '[Y]ank to end of line')
 
--- Buffer list navigation
-bind('n', 'gB', vim.cmd.bprevious, 'previous [b]uffer')
-bind('n', 'gb', vim.cmd.bnext, 'next [b]uffer')
-
 -- Undo tree
 bind('n', '<leader>U', '<cmd>UndotreeToggle<cr>', '[U]ndo tree toggle')
 

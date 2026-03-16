@@ -20,10 +20,7 @@ require('todo-comments').setup {
     TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
   },
   highlight = {
-    pattern = {
-      [[.*<(KEYWORDS)\s*:]],     -- default pattern
-      [[.*\b(KEYWORDS)!\s*\()]], -- Rust macro pattern
-    },
+    pattern = [[.*<(KEYWORDS)\s*:]],
     comments_only = false,
   },
 }

@@ -1,7 +1,7 @@
-if vim.g.did_load_completion_plugin then
+if vim.g.did_load_completion_plugins then
   return
 end
-vim.g.did_load_completion_plugin = true
+vim.g.did_load_completion_plugins = true
 
 local colorful_menu = require('colorful-menu')
 local blink = require('blink.cmp')
