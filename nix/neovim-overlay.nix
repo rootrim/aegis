@@ -95,7 +95,7 @@ with final.pkgs.lib; let
     zls
   ];
 in {
-  nvim-pkg = mkNeovim {
+  aegis = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
   };

@@ -26,8 +26,8 @@
         };
       in {
         packages = {
-          default = pkgs'.nvim-pkg;
-          nvim = pkgs'.nvim-pkg;
+          default = pkgs'.aegis;
+          nvim = pkgs'.aegis;
         };
 
         devShells.default = pkgs'.mkShell {
