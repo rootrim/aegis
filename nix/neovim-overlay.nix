@@ -16,11 +16,11 @@ with final.pkgs.lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    friendly-snippets
     # (autocompletion) and extensions
     blink-cmp
     blink-copilot
     colorful-menu-nvim
+    friendly-snippets
     # ^ cmp extensions
     # lsp extensions
     nvim-lspconfig
@@ -38,7 +38,8 @@ with final.pkgs.lib; let
     # UI
     lualine-nvim
     nvim-treesitter-context
-    gruvbox-material-nvim
+    gruvbox-material
+    kanso-nvim
     oil-nvim
     bufferline-nvim
     # ^ UI
@@ -88,7 +89,6 @@ with final.pkgs.lib; let
     nixd
     rust-analyzer
     rustfmt
-    shellcheck
     shfmt
     stylua
     zig
