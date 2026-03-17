@@ -9,6 +9,10 @@ local blink = require('blink.cmp')
 require('copilot').setup {
   suggestion = { enabled = false },
   panel = { enabled = false },
+  filetypes = {
+    markdown = true,
+    help = true,
+  },
 }
 
 blink.setup {
@@ -67,6 +71,9 @@ blink.setup {
         module = 'blink-copilot',
         score_offset = 100,
         async = true,
+        opts = {
+          max_completions = 2,
+        },
       },
       lazydev = {
         name = 'LazyDev',

@@ -84,6 +84,7 @@ with final.pkgs.lib; let
     clang-tools
     clippy
     fish-lsp
+    nodejs-slim
     lua-language-server
     nil
     nixd
