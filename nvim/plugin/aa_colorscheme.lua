@@ -1,3 +1,5 @@
--- require('gruvbox-material').setup()
 require('kanso').setup()
-vim.cmd('colorscheme kanso')
+vim.g.gruvbox_material_enable_italic = true
+vim.g.gruvbox_material_better_performance = true
+vim.g.gruvbox_material_current_word = 'underline'
+vim.cmd.colorscheme('gruvbox-material')
