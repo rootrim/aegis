@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 if vim.g.did_load_completion_plugins then
   return
 end
