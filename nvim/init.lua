@@ -24,9 +24,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.inccommand = 'split'
 
-opt.spell = false
-opt.spelllang = 'en'
-
 opt.termguicolors = true
 opt.expandtab = true
 opt.tabstop = 2
@@ -43,7 +40,6 @@ opt.scrolloff = 25
 opt.mouse = ''
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-opt.colorcolumn = '100'
 
 lsp.inlay_hint.enable()
 
