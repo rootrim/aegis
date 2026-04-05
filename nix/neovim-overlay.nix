@@ -61,6 +61,7 @@ with final.pkgs.lib; let
     trouble-nvim
     nvim-colorizer-lua
     todo-comments-nvim
+    tabout-nvim
     # ^ Useful utilities
     # libraries that other plugins depend on
     mini-nvim
