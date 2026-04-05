@@ -28,6 +28,7 @@
         packages = {
           default = pkgs'.aegis;
           nvim = pkgs'.aegis;
+          nvim-dev = pkgs'.nvim-dev;
         };
 
         devShells.default = pkgs'.mkShell {

@@ -42,6 +42,7 @@ with final.pkgs.lib; let
     kanso-nvim
     oil-nvim
     bufferline-nvim
+    quicker-nvim
     # ^ UI
     # language support
     rustaceanvim
@@ -104,7 +105,6 @@ in {
 
   nvim-dev = mkNeovim {
     plugins = all-plugins;
-    inherit extraPackages;
     appName = "nvim-dev";
     wrapRc = false;
   };

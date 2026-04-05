@@ -1,3 +1,4 @@
 result
 .direnv
 .luarc.json
+nvim/after/syntax
