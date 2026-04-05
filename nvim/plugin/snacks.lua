@@ -83,7 +83,6 @@ vim.api.nvim_create_autocmd('LspProgress', {
     end, p)
 
     local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
-    ---@diagnostic disable-next-line
     vim.notify(table.concat(msg, '\n'), 'info', {
       id = 'lsp_progress',
       title = client.name,
