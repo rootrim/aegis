@@ -42,7 +42,6 @@ with final.pkgs.lib; let
     kanso-nvim
     oil-nvim
     bufferline-nvim
-    quicker-nvim
     # ^ UI
     # language support
     rustaceanvim
