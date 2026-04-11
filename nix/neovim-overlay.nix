@@ -52,7 +52,6 @@ with final.pkgs.lib; let
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception
-    undotree
     trouble-nvim
     nvim-colorizer-lua
     todo-comments-nvim

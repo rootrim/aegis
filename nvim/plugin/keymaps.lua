@@ -11,9 +11,6 @@ local bindbf = require('user.bind').bindbf
 -- Yank from current position till end of current line
 bind('n', 'Y', 'y$', '[Y]ank to end of line')
 
--- Undo tree
-bind('n', '<leader>U', '<cmd>UndotreeToggle<cr>', '[U]ndo tree toggle')
-
 bind('n', '<leader>xc', function()
 	vim.fn.setqflist {}
 	vim.fn.setloclist(0, {})
