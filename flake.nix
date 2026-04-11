@@ -11,11 +11,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
-      perSystem = {
-        system,
-        pkgs,
-        ...
-      }: let
+      perSystem = {system, ...}: let
         neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
         pkgs' = import inputs.nixpkgs {
           inherit system;
@@ -34,10 +30,6 @@
         devShells.default = pkgs'.mkShell {
           name = "nvim-devShell";
           buildInputs = with pkgs'; [
-            lua-language-server
-            nil
-            stylua
-            luajitPackages.luacheck
             nvim-dev
           ];
           shellHook = ''

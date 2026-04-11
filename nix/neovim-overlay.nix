@@ -83,6 +83,7 @@ with final.pkgs.lib; let
     clippy
     fish-lsp
     lua-language-server
+    luajitPackages.luacheck
     nil
     nixd
     rust-analyzer
