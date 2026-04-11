@@ -18,7 +18,6 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     # (autocompletion) and extensions
     blink-cmp
-    blink-copilot
     colorful-menu-nvim
     friendly-snippets
     # ^ cmp extensions
@@ -46,7 +45,6 @@ with final.pkgs.lib; let
     # language support
     rustaceanvim
     render-markdown-nvim
-    copilot-lua
     lazydev-nvim
     # ^ language support
     # navigation/editing enhancement plugins
@@ -84,7 +82,6 @@ with final.pkgs.lib; let
     clang-tools
     clippy
     fish-lsp
-    nodejs-slim
     lua-language-server
     nil
     nixd

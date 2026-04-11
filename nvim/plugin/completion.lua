@@ -7,15 +7,6 @@ vim.g.did_load_completion_plugins = true
 local colorful_menu = require('colorful-menu')
 local blink = require('blink.cmp')
 
-require('copilot').setup {
-  suggestion = { enabled = false },
-  panel = { enabled = false },
-  filetypes = {
-    markdown = true,
-    help = true,
-  },
-}
-
 blink.setup {
   completion = {
     ghost_text = { enabled = true },
@@ -65,17 +56,8 @@ blink.setup {
     enabled = true,
   },
   sources = {
-    default = { 'lazydev', 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
     providers = {
-      copilot = {
-        name = 'copilot',
-        module = 'blink-copilot',
-        score_offset = 100,
-        async = true,
-        opts = {
-          max_completions = 2,
-        },
-      },
       lazydev = {
         name = 'LazyDev',
         module = 'lazydev.integrations.blink',
