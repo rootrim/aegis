@@ -29,7 +29,6 @@ with lib;
       plugin = null;
       config = null;
       optional = false;
-      runtime = {};
     };
 
     externalPackages = extraPackages ++ (optionals withSqlite [sqlite]);
@@ -42,18 +41,6 @@ with lib;
         else {plugin = x;}
       ))
     plugins;
-
-    neovimConfig = neovimUtils.makeNeovimConfig {
-      inherit
-        extraPython3Packages
-        withPython3
-        withRuby
-        withNodeJs
-        viAlias
-        vimAlias
-        ;
-      plugins = normalizedPlugins;
-    };
 
     nvimRtpSrc = let
       src = ../nvim;
@@ -133,29 +120,27 @@ with lib;
     luaPackages = neovim-unwrapped.lua.pkgs;
     resolvedExtraLuaPackages = extraLuaPackages luaPackages;
 
-    extraMakeWrapperLuaCArgs = optionalString (resolvedExtraLuaPackages != []) ''
-      --suffix LUA_CPATH ";" "${
-        concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages
-      }"'';
+    extraMakeWrapperLuaCArgs =
+      optionalString (resolvedExtraLuaPackages != [])
+      ''--suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
 
-    extraMakeWrapperLuaArgs = optionalString (resolvedExtraLuaPackages != []) ''
-      --suffix LUA_PATH ";" "${
-        concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages
-      }"'';
+    extraMakeWrapperLuaArgs =
+      optionalString (resolvedExtraLuaPackages != [])
+      ''--suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
 
-    neovim-wrapped = wrapNeovimUnstable neovim-unwrapped (neovimConfig
-      // {
-        luaRcContent = initLua;
-        wrapperArgs =
-          escapeShellArgs neovimConfig.wrapperArgs
-          + " "
-          + extraMakeWrapperArgs
-          + " "
-          + extraMakeWrapperLuaCArgs
-          + " "
-          + extraMakeWrapperLuaArgs;
-        wrapRc = wrapRc;
-      });
+    neovim-wrapped = wrapNeovimUnstable neovim-unwrapped {
+      inherit extraPython3Packages withPython3 withRuby withNodeJs viAlias vimAlias;
+      plugins = normalizedPlugins;
+
+      luaRcContent = initLua;
+      wrapperArgs =
+        extraMakeWrapperArgs
+        + " "
+        + extraMakeWrapperLuaCArgs
+        + " "
+        + extraMakeWrapperLuaArgs;
+      wrapRc = wrapRc;
+    };
 
     isCustomAppName = appName != null && appName != "nvim";
   in
