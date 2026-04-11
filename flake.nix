@@ -31,6 +31,11 @@
           name = "nvim-devShell";
           buildInputs = with pkgs'; [
             nvim-dev
+            alejandra
+            lua-language-server
+            luajitPackages.luacheck
+            nixd
+            stylua
           ];
           shellHook = ''
             ln -fs ${pkgs'.nvim-luarc-json} .luarc.json
