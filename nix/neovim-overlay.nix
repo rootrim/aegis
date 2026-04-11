@@ -39,8 +39,8 @@ with final.pkgs.lib; let
     nvim-treesitter-context
     gruvbox-material
     kanso-nvim
-    oil-nvim
     bufferline-nvim
+    fidget-nvim
     # ^ UI
     # language support
     rustaceanvim
@@ -48,9 +48,6 @@ with final.pkgs.lib; let
     lazydev-nvim
     # ^ language support
     # navigation/editing enhancement plugins
-    eyeliner-nvim
-    nvim-treesitter-textobjects
-    nvim-ts-context-commentstring
     nvim-parinfer
     # ^ navigation/editing enhancement plugins
     # Useful utilities
@@ -84,7 +81,6 @@ with final.pkgs.lib; let
     fish-lsp
     lua-language-server
     luajitPackages.luacheck
-    nil
     nixd
     rust-analyzer
     rustfmt
