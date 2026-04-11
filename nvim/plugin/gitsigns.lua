@@ -1,21 +1,21 @@
 if vim.g.did_load_gitsigns_plugin then
-  return
+	return
 end
 vim.g.did_load_gitsigns_plugin = true
 
 local bindbf = require('user.bind').bindbf
 
 vim.schedule(function()
-  require('gitsigns').setup {
-    current_line_blame = true,
-    current_line_blame_opts = {
-      ignore_whitespace = true,
-      delay = 0,
-    },
-    on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
-      bindbf(bufnr, 'n', '<leader>gb', gs.toggle_current_line_blame, '[g]it toggle current line [b]lame')
-      bindbf(bufnr, 'n', '<leader>gd', gs.toggle_deleted, '[g]it toggle [d]eleted')
-    end,
-  }
+	require('gitsigns').setup {
+		current_line_blame = true,
+		current_line_blame_opts = {
+			ignore_whitespace = true,
+			delay = 0,
+		},
+		on_attach = function(bufnr)
+			local gs = package.loaded.gitsigns
+			bindbf(bufnr, 'n', '<leader>gb', gs.toggle_current_line_blame, '[g]it toggle current line [b]lame')
+			bindbf(bufnr, 'n', '<leader>gd', gs.toggle_deleted, '[g]it toggle [d]eleted')
+		end,
+	}
 end)

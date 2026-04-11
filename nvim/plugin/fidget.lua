@@ -1,5 +1,5 @@
 if vim.g.did_load_fidget_plugin then
-  return
+	return
 end
 vim.g.did_load_fidget_plugin = true
 
