@@ -3,11 +3,7 @@ if vim.g.did_load_treesitter_plugin then
 end
 vim.g.did_load_treesitter_plugin = true
 
-local configs = require('nvim-treesitter.configs')
-vim.g.skip_ts_context_comment_string_module = true
-
----@diagnostic disable-next-line: missing-fields
-configs.setup {
+require('nvim-treesitter').setup {
   highlight = {
     enable = true,
     disable = function(_, buf)
@@ -18,43 +14,9 @@ configs.setup {
       end
     end,
   },
-  textobjects = {
-    select = {
-      enable = false,
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['aP'] = '@parameter.outer',
-        ['iP'] = '@parameter.inner',
-      },
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- karakter bazlı seçim
-        ['@function.outer'] = 'V',  -- satır bazlı seçim
-        ['@class.outer'] = '<c-v>', -- blok bazlı seçim
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']P'] = '@parameter.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[P'] = '@parameter.outer',
-      },
-    },
-  },
 }
 
 require('treesitter-context').setup {
-  max_lines = 3,
+  max_lines = 0,
+  multiwindow = true,
 }
-
-require('ts_context_commentstring').setup()
-
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
