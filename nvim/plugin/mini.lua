@@ -3,20 +3,29 @@ if vim.g.did_load_mini_plugin then
 end
 vim.g.did_load_mini_plugin = true
 
-require('mini.basics').setup { mappings = { windows = true } }
-require('mini.align').setup()
+local bind = require('user.bind').bind
+
+require('mini.bufremove').setup()
 require('mini.comment').setup()
-require('mini.ai').setup()
-require('mini.move').setup()
-require('mini.keymap').setup()
-require('mini.pairs').setup()
-require('mini.icons').setup()
-require('mini.extra').setup()
 require('mini.cursorword').setup()
+require('mini.icons').setup()
+require('mini.jump').setup { silent = true }
+require('mini.jump2d').setup { silent = true }
+require('mini.keymap').setup()
+require('mini.move').setup()
+require('mini.pairs').setup()
 require('mini.splitjoin').setup()
 require('mini.surround').setup()
-require('mini.jump').setup()
-require('mini.jump2d').setup()
+
+require('mini.files').setup {
+  windows = { preview = true },
+}
+bind('n', '-', MiniFiles.open, 'Mini Files')
+
+require('mini.basics').setup {
+  options = { extra_ui = true },
+  mappings = { windows = true },
+}
 
 local function extra_mode_status()
   -- recording macros
@@ -36,6 +45,7 @@ local function extra_mode_status()
   end
   return ''
 end
+
 require('mini.statusline').setup {
   content = {
     active = function()
