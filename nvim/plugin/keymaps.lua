@@ -9,7 +9,7 @@ local bind = require('user.bind').bind
 local bindbf = require('user.bind').bindbf
 
 -- Yank from current position till end of current line
-bind('n', 'Y', 'y$', '[Y]ank to end of line')
+bind('n', 'Y', 'y$', 'Yank to end of line')
 
 bind('n', '<leader>xc', function()
 	vim.fn.setqflist {}
@@ -113,3 +113,10 @@ api.nvim_create_autocmd('LspAttach', {
 		bindbf(bufnr, { 'i', 's' }, '<C-s>', vim.lsp.buf.signature_help, 'LSP: signature help')
 	end,
 })
+
+local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
+vim.on_key(function(char)
+	if vim.fn.mode() == 'n' then
+		vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
+	end
+end, auto_hlsearch_namespace)
