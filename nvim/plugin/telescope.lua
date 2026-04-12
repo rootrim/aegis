@@ -7,6 +7,7 @@ local bind = require('user.bind').bind
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+local open_with_trouble = require('trouble.sources.telescope').open
 
 local layout_config = {
 	vertical = {
@@ -52,12 +53,13 @@ telescope.setup {
 			i = {
 				['<C-q>'] = actions.send_to_qflist,
 				['<C-l>'] = actions.send_to_loclist,
-				-- ['<esc>'] = actions.close,
 				['<C-s>'] = actions.cycle_previewers_next,
 				['<C-a>'] = actions.cycle_previewers_prev,
+				['<c-t>'] = open_with_trouble,
 			},
 			n = {
 				q = actions.close,
+				['<c-t>'] = open_with_trouble,
 			},
 		},
 		preview = {

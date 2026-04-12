@@ -44,6 +44,7 @@ with final.pkgs.lib; let
     # ^ UI
     # language support
     rustaceanvim
+    crates-nvim
     render-markdown-nvim
     lazydev-nvim
     # ^ language support
