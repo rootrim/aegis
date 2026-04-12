@@ -15,12 +15,12 @@ bufferline.setup {
 	},
 }
 
-bind('n', 'gB', vim.cmd.bprevious, 'previous [b]uffer')
-bind('n', 'gb', vim.cmd.bnext, 'next [b]uffer')
-bind('n', '<leader>bn', vim.cmd.enew, '[b]uffer: [n]ew')
-bind('n', '<leader>bw', vim.cmd.bw, '[b]uffer: [w]ipe')
-bind('n', '<leader>bp', bufferline.pick, '[b]ufferline [p]ick')
-bind('n', '<leader>bc', bufferline.close_others, '[b]ufferline [c]lose others')
+bind('n', 'gB', vim.cmd.bprevious, 'Previous Buffer')
+bind('n', 'gb', vim.cmd.bnext, 'Next Buffer')
+bind('n', '<leader>bn', vim.cmd.enew, 'New Buffer')
+bind('n', '<leader>bw', vim.cmd.bw, 'Wipe Buffer')
+bind('n', '<leader>bp', bufferline.pick, 'Bufferline Pick')
+bind('n', '<leader>bc', bufferline.close_others, 'Bufferline Close Others')
 bind('n', '<leader>br', function()
 	bufferline.close_in_direction('right')
-end, '[b]ufferline close [r]ight')
+end, 'Bufferline Close Right')

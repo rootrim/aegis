@@ -14,8 +14,8 @@ vim.schedule(function()
 		},
 		on_attach = function(bufnr)
 			local gs = package.loaded.gitsigns
-			bindbf(bufnr, 'n', '<leader>gb', gs.toggle_current_line_blame, '[g]it toggle current line [b]lame')
-			bindbf(bufnr, 'n', '<leader>gd', gs.toggle_deleted, '[g]it toggle [d]eleted')
+			bindbf(bufnr, 'n', '<leader>gb', gs.toggle_current_line_blame, 'Git Toggle Current Line Blame')
+			bindbf(bufnr, 'n', '<leader>gd', gs.toggle_deleted, 'Git Toggle Deleted')
 		end,
 	}
 end)

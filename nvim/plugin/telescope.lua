@@ -31,16 +31,16 @@ local project_files = function()
 	end
 end
 
-bind('n', '<leader>fp', builtin.oldfiles, '[F]ind [P]revious files')
-bind('n', '<leader>fg', builtin.live_grep, '[F]ind words (live [G]rep)')
-bind('n', '<leader>ff', project_files, '[F]ind [F]iles')
-bind('n', '<leader>fq', builtin.quickfix, '[F]ind [Q]uickfix list')
-bind('n', '<leader>fh', builtin.command_history, '[F]ind command [H]istory')
-bind('n', '<leader>fl', builtin.loclist, '[F]ind [L]oclist')
-bind('n', '<leader>fr', builtin.registers, '[F]ind [R]egisters')
-bind('n', '<leader>fb', builtin.buffers, '[F]ind [B]uffers')
-bind('n', '<leader>ft', builtin.marks, '[F]ind [M]arks')
-bind('n', '<leader>fz', builtin.current_buffer_fuzzy_find, '[F]ind words current buffer fu[Z]zy')
+bind('n', '<leader>fp', builtin.oldfiles, 'Find Previous Files')
+bind('n', '<leader>fg', builtin.live_grep, 'Find Words (Live Grep)')
+bind('n', '<leader>ff', project_files, 'Find Files')
+bind('n', '<leader>fq', builtin.quickfix, 'Find Quickfix List')
+bind('n', '<leader>fh', builtin.command_history, 'Find Command History')
+bind('n', '<leader>fl', builtin.loclist, 'Find Loclist')
+bind('n', '<leader>fr', builtin.registers, 'Find Registers')
+bind('n', '<leader>fb', builtin.buffers, 'Find Buffers')
+bind('n', '<leader>ft', builtin.marks, 'Find Marks')
+bind('n', '<leader>fz', builtin.current_buffer_fuzzy_find, 'Find Words Current Buffer Fuzzy')
 
 telescope.setup {
 	defaults = {

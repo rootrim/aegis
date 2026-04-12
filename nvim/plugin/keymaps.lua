@@ -63,19 +63,19 @@ local toIntegral = math.ceil
 bind('n', '<leader>w+', function()
 	local curWinWidth = api.nvim_win_get_width(0)
 	api.nvim_win_set_width(0, toIntegral(curWinWidth * 3 / 2))
-end, 'inc window [w]idth')
+end, 'inc window width')
 bind('n', '<leader>w-', function()
 	local curWinWidth = api.nvim_win_get_width(0)
 	api.nvim_win_set_width(0, toIntegral(curWinWidth * 2 / 3))
-end, 'dec window [w]idth')
+end, 'dec window width')
 bind('n', '<leader>h+', function()
 	local curWinHeight = api.nvim_win_get_height(0)
 	api.nvim_win_set_height(0, toIntegral(curWinHeight * 3 / 2))
-end, 'inc window [h]eight')
+end, 'inc window height')
 bind('n', '<leader>h-', function()
 	local curWinHeight = api.nvim_win_get_height(0)
 	api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
-end, 'dec window [h]eight')
+end, 'dec window height')
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass
 -- Esc to terminal
@@ -92,8 +92,8 @@ bind('c', '%%', function()
 	end
 end, "expand to current buffer's directory", { expr = true })
 
-bind('n', '<leader>tn', vim.cmd.tabnew, '[t]ab: [n]ew')
-bind('n', '<leader>tq', vim.cmd.tabclose, '[t]ab: [q]uit/close')
+bind('n', '<leader>tn', vim.cmd.tabnew, 'New Tab')
+bind('n', '<leader>tq', vim.cmd.tabclose, 'Quit/Close Tab')
 
 bind('n', '<C-d>', '<C-d>zz', 'move [d]own half-page and center')
 bind('n', '<C-u>', '<C-u>zz', 'move [u]p half-page and center')

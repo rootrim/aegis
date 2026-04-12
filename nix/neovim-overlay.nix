@@ -16,6 +16,8 @@ with final.pkgs.lib; let
 
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
+    nvim-treesitter-textobjects
+    nvim-ts-context-commentstring
     # (autocompletion) and extensions
     blink-cmp
     colorful-menu-nvim
