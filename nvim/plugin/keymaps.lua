@@ -36,8 +36,8 @@ local function cright()
 	try_fallback_notify { try = vim.cmd.cnext, fallback = vim.cmd.cfirst, notify = 'Quickfix list is empty!' }
 end
 
-bind('n', '[c', cleft, '[c]ycle quickfix left')
-bind('n', ']c', cright, '[c]ycle quickfix right')
+bind('n', '[c', cleft, 'cycle quickfix left')
+bind('n', ']c', cright, 'cycle quickfix right')
 bind('n', '[C', vim.cmd.cfirst, 'first quickfix entry')
 bind('n', ']C', vim.cmd.clast, 'last quickfix entry')
 
@@ -53,10 +53,10 @@ local function lright()
 	}
 end
 
-bind('n', '[l', lleft, 'cycle [l]oclist left')
-bind('n', ']l', lright, 'cycle [l]oclist right')
-bind('n', '[L', vim.cmd.lfirst, 'first [L]oclist entry')
-bind('n', ']L', vim.cmd.llast, 'last [L]oclist entry')
+bind('n', '[l', lleft, 'cycle loclist left')
+bind('n', ']l', lright, 'cycle loclist right')
+bind('n', '[L', vim.cmd.lfirst, 'first loclist entry')
+bind('n', ']L', vim.cmd.llast, 'last loclist entry')
 
 -- Resize vertical splits
 local toIntegral = math.ceil
