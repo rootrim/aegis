@@ -42,6 +42,7 @@ opt.mouse = ''
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 lsp.inlay_hint.enable()
+require('vim._core.ui2').enable()
 
 -- Configure Neovim diagnostic messages
 
@@ -93,7 +94,8 @@ vim.diagnostic.config {
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
-cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
+cmd.packadd('cfilter')
+cmd.packadd('nvim.undotree')
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE', 0)

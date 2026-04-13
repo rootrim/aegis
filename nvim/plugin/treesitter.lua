@@ -60,7 +60,7 @@ bind({ 'n', 'x', 'o' }, '[P', function()
 end, 'previous [P]arameter (end)')
 
 require('treesitter-context').setup {
-	max_lines = 0,
+	max_lines = 5,
 	multiwindow = true,
 }
 
