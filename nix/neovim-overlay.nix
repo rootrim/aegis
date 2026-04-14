@@ -37,7 +37,6 @@ with final.pkgs.lib; let
     telescope-fzy-native-nvim
     # ^ telescope and extensions
     # UI
-    lualine-nvim
     nvim-treesitter-context
     gruvbox-material
     kanso-nvim
