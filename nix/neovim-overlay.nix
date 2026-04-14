@@ -75,6 +75,7 @@ with final.pkgs.lib; let
 
   extraPackages = with pkgs; [
     # language servers, formatters, etc.
+    tree-sitter
     alejandra
     bash-language-server
     clang-tools
