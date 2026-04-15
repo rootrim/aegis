@@ -11,7 +11,6 @@ require('mini.cursorword').setup()
 require('mini.icons').setup()
 require('mini.jump').setup { silent = true }
 require('mini.jump2d').setup { silent = true }
-require('mini.keymap').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
 require('mini.splitjoin').setup()
