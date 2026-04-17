@@ -102,6 +102,7 @@ bind('n', '<C-b>', '<C-b>zz', 'move UP full-page and center')
 
 api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
+		vim.lsp.codelens.enable()
 		local bufnr = event.buf
 		bindbf(bufnr, 'n', 'K', vim.lsp.buf.hover, 'LSP: hover')
 		bindbf(bufnr, 'n', 'grr', vim.lsp.buf.references, 'LSP: references')
@@ -109,6 +110,7 @@ api.nvim_create_autocmd('LspAttach', {
 		bindbf(bufnr, 'n', 'grn', vim.lsp.buf.rename, 'LSP: rename')
 		bindbf(bufnr, 'n', 'gra', vim.lsp.buf.code_action, 'LSP: code action')
 		bindbf(bufnr, 'n', 'grt', vim.lsp.buf.definition, 'LSP: code definition')
+		bindbf(bufnr, 'n', 'grx', vim.lsp.codelens.run, 'LSP: codelens')
 		bindbf(bufnr, 'n', 'gO', vim.lsp.buf.document_symbol, 'LSP: document symbol')
 		bindbf(bufnr, { 'i', 's' }, '<C-s>', vim.lsp.buf.signature_help, 'LSP: signature help')
 	end,
