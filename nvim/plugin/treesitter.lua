@@ -67,9 +67,9 @@ require('treesitter-context').setup {
 require('ts_context_commentstring').setup()
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { '<filetype>' },
+	pattern = '*',
 	callback = function()
-		vim.treesitter.start()
+		pcall(vim.treesitter.start)
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
