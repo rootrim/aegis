@@ -100,10 +100,3 @@ cmd.packadd('nvim.undotree')
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE', 0)
-
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { '<filetype>' },
-	callback = function()
-		vim.treesitter.start()
-	end,
-})
