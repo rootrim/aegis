@@ -40,6 +40,7 @@ opt.scrolloff = 5
 opt.mouse = ''
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+opt.syntax = 'off'
 
 lsp.inlay_hint.enable()
 require('vim._core.ui2').enable()
@@ -99,3 +100,10 @@ cmd.packadd('nvim.undotree')
 
 -- let sqlite.lua (which some plugins depend on) know where to find sqlite
 vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE', 0)
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { '<filetype>' },
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
