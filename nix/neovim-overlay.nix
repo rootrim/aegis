@@ -48,6 +48,7 @@ with final.pkgs.lib; let
     crates-nvim
     render-markdown-nvim
     lazydev-nvim
+    flutter-tools-nvim
     # ^ language support
     # navigation/editing enhancement plugins
     nvim-parinfer
