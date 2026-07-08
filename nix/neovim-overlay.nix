@@ -80,13 +80,10 @@ with final.pkgs.lib; let
     alejandra
     bash-language-server
     clang-tools
-    clippy
     fish-lsp
     lua-language-server
     luajitPackages.luacheck
     nixd
-    rust-analyzer
-    rustfmt
     shfmt
     stylua
     zig
