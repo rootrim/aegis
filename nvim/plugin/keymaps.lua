@@ -102,7 +102,6 @@ bind('n', '<C-b>', '<C-b>zz', 'move UP full-page and center')
 
 api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
-		vim.lsp.codelens.enable()
 		local bufnr = event.buf
 		bindbf(bufnr, 'n', 'K', vim.lsp.buf.hover, 'LSP: hover')
 		bindbf(bufnr, 'n', 'grr', vim.lsp.buf.references, 'LSP: references')

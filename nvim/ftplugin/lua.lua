@@ -4,12 +4,4 @@ require('lazydev').setup {
 	},
 }
 
-require('user.lsp').enable_and_config('lua_ls', {
-	settings = {
-		Lua = {
-			codelens = {
-				enable = true,
-			},
-		},
-	},
-})
+require('user.lsp').enable_and_config('lua_ls', {})
