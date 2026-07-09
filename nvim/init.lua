@@ -25,6 +25,7 @@ opt.smartcase = true
 opt.inccommand = 'split'
 
 opt.termguicolors = true
+opt.swapfile = false
 opt.expandtab = true
 opt.tabstop = 2
 opt.softtabstop = 2
